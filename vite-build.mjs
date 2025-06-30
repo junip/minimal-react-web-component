@@ -49,7 +49,7 @@ const getConfiguration = ({ plugins, ...library }, mode) => {
       }),
       typescript({
         tsconfig: "./tsconfig.json",
-        outDir: library.name === "dependencies" ? "./dist" : `./dist/${library.name}`,
+        outDir: "./dist",
       }),
       ...plugins
     ],
