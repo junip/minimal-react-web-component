@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React Blog App - Web Component Demo</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Roboto', sans-serif;
+            background-color: #f5f5f5;
+        }
+        
+        .demo-container {
+            max-width: 100%;
+            margin: 0 auto;
+        }
+        
+        .demo-header {
+            background: linear-gradient(135deg, #1976d2 0%, #dc004e 100%);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+        
+        .demo-header h1 {
+            margin: 0 0 1rem 0;
+            font-size: 2.5rem;
+            font-weight: 700;
+        }
+        
+        .demo-header p {
+            margin: 0;
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        .web-component-container {
+            width: 100%;
+        }
+        
+        react-blog-app {
+            display: block;
+            width: 100%;
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="demo-container">
+        <div class="demo-header">
+            <h1>🚀 React Blog App Web Component</h1>
+            <p>A beautiful, responsive React blog application rendered as a web component</p>
+        </div>
+        
+        <div class="web-component-container">
+            <!-- React Blog App Web Component -->
+            <react-blog-app app-name="React Blog Hub - Web Component Edition"></react-blog-app>
+        </div>
+    </div>
+
+    <!-- Load dependencies first -->
+    <script src="./dist/dependencies.full.umd.js"></script>
+    <!-- Load the blog app web component -->
+    <script src="./dist/blog-app.full.umd.js"></script>
+</body>
+</html>

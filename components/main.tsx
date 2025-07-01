@@ -6,7 +6,7 @@ import SimpleBox from './simple-box/SimpleBox'
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <div>
-        <MuiModal buttonlabel="Test Button" />
+        <MuiModal buttonLabel="Test Button" />
         <SimpleBox text="Test Simple Box" />
     </div>
   </StrictMode>,

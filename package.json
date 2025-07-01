@@ -6,7 +6,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "node vite-build.mjs"
+    "build": "node vite-build.mjs",
+    "start": "vite preview"
   },
   "author": "",
   "license": "ISC",

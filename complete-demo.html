@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React Web Components Demo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 2rem;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 3rem;
+        }
+        
+        .header h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+        
+        .demo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .demo-card {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .demo-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+        
+        .demo-card h2 {
+            color: #333;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+        
+        .demo-card p {
+            color: #666;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+        
+        .component-wrapper {
+            border: 2px dashed #ddd;
+            border-radius: 8px;
+            padding: 1rem;
+            background: #f9f9f9;
+        }
+        
+        .full-width-demo {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            margin-top: 2rem;
+        }
+        
+        .full-width-demo h2 {
+            background: linear-gradient(135deg, #1976d2 0%, #dc004e 100%);
+            color: white;
+            padding: 1.5rem 2rem;
+            margin: 0;
+            font-size: 1.8rem;
+            font-weight: 600;
+        }
+        
+        /* Web component styles */
+        mui-modal, simple-box {
+            display: block;
+            margin: 1rem 0;
+        }
+        
+        react-blog-app {
+            display: block;
+            width: 100%;
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🚀 React Web Components</h1>
+            <p>Beautiful React components transformed into reusable web components that work anywhere</p>
+        </div>
+        
+        <div class="demo-grid">
+            <div class="demo-card">
+                <h2>📱 Simple Box Component</h2>
+                <p>A basic React component demonstrating the web component transformation process.</p>
+                <div class="component-wrapper">
+                    <simple-box text="Hello from Web Component!" color="#1976d2"></simple-box>
+                </div>
+            </div>
+            
+            <div class="demo-card">
+                <h2>🎛️ Material UI Modal</h2>
+                <p>A sophisticated modal component built with Material-UI, showcasing complex React functionality as a web component.</p>
+                <div class="component-wrapper">
+                    <mui-modal button-label="Open Material UI Modal"></mui-modal>
+                </div>
+            </div>
+        </div>
+        
+        <div class="full-width-demo">
+            <h2>🌟 React Blog Hub - Complete Web Application</h2>
+            <react-blog-app app-name="React Blog Hub - Web Component Edition"></react-blog-app>
+        </div>
+    </div>
+
+    <!-- Load dependencies first -->
+    <script src="./dist/dependencies.full.umd.js"></script>
+    
+    <!-- Load all web components -->
+    <script src="./dist/simple-box.full.umd.js"></script>
+    <script src="./dist/mui-modal.full.umd.js"></script>
+    <script src="./dist/blog-app.full.umd.js"></script>
+</body>
+</html>

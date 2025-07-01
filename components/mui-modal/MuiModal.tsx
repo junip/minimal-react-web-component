@@ -9,7 +9,7 @@ import SimpleDialog from './SimpleDialog';
 
 const queryClient = new QueryClient();
 
-export default function MuiModal({buttonlabel = ""}) {
+export default function MuiModal({buttonLabel = ""}) {
     const [open, setOpen] = useState(false);
 
     const handleClickOpen = () => {
@@ -23,8 +23,8 @@ export default function MuiModal({buttonlabel = ""}) {
     return (
         <QueryClientProvider client={queryClient}>
             <Box>
-                <Button variant="outlined" onClick={handleClickOpen}>
-                    {buttonlabel}
+                <Button variant="outlined" color="primary" onClick={handleClickOpen}>
+                    {buttonLabel}
                 </Button>
                 <SimpleDialog
                     open={open}

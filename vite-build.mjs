@@ -4,7 +4,7 @@ import { build, defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import typescript from '@rollup/plugin-typescript';
 import globals from "./webcomponents/globals.json" with { type: "json" };
-import { writeFile } from "fs/promises";
+import { writeFile, copyFile, mkdir } from "fs/promises";
 
 const liteRollup = {
   external: Object.keys(globals),
@@ -24,6 +24,12 @@ const simpleBoxWCConfig = {
   plugins: [],
   entry: path.resolve(__dirname, "./webcomponents/simple-box.ts"),
   name: "simple-box",
+  formats: ["umd"],
+};
+const blogAppWCConfig = {
+  plugins: [],
+  entry: path.resolve(__dirname, "./webcomponents/blog-app.ts"),
+  name: "blog-app",
   formats: ["umd"],
 };
 
@@ -81,6 +87,34 @@ const viteBuild = (configFactory) => {
   return build(config);
 };
 
+const copyHtmlFiles = async () => {
+  const __dirname = path.dirname(url.fileURLToPath(import.meta.url));
+  
+  // Ensure dist directory exists
+  try {
+    await mkdir(path.resolve(__dirname, "./dist"), { recursive: true });
+  } catch (err) {
+    // Directory might already exist
+  }
+  
+  // Copy HTML files to dist
+  await copyFile(
+    path.resolve(__dirname, "./complete-demo.html"),
+    path.resolve(__dirname, "./dist/complete-demo.html")
+  );
+  
+  await copyFile(
+    path.resolve(__dirname, "./index.html"),
+    path.resolve(__dirname, "./dist/index.html")
+  );
+  
+  // Copy complete-demo.html as index.html for Vercel default page
+  await copyFile(
+    path.resolve(__dirname, "./complete-demo.html"),
+    path.resolve(__dirname, "./dist/index.html")
+  );
+};
+
 const buildLibraries = async () => {
   await createDependencyRollup();
 
@@ -88,9 +122,13 @@ const buildLibraries = async () => {
     ...["lite", "full"].map(mode => [
       viteBuild(getConfiguration(muiModalWCConfig, mode)),
       viteBuild(getConfiguration(simpleBoxWCConfig, mode)),
+      viteBuild(getConfiguration(blogAppWCConfig, mode)),
     ]),
     [viteBuild(getConfiguration(dependenciesConfig, "full"))]
   ));
+  
+  // Copy HTML files after building JavaScript
+  await copyHtmlFiles();
 };
 
 buildLibraries();

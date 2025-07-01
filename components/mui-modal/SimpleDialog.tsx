@@ -3,6 +3,7 @@ import Dialog from "@mui/material/Dialog";
 import DialogTitle from "@mui/material/DialogTitle";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
+import TestTable from "./TestTable";
 
 export interface SimpleDialogProps {
   open: boolean;
@@ -32,7 +33,7 @@ export default function SimpleDialog(props: SimpleDialogProps) {
     return (
         <Dialog onClose={onClose} open={open}>
             <DialogTitle>fetch users test</DialogTitle>
-                <List sx={{pt: 0}}>
+                {/* <List sx={{pt: 0}}>
                         {data && !isPending && !isError && (
                             data.map((user: User) => (
                                 <ListItem key={user.id}>
@@ -40,7 +41,8 @@ export default function SimpleDialog(props: SimpleDialogProps) {
                                 </ListItem>
                             ))
                         )}
-                </List>
+                </List> */}
+                <TestTable />
         </Dialog>
     );
 }
